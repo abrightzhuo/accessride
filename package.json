@@ -1,0 +1,47 @@
+{
+  "name": "accessible-ride",
+  "private": true,
+  "version": "0.3.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:rider",
+    "build:rider": "tsc -b && vite build --mode rider --outDir dist-rider",
+    "build:agency": "tsc -b && vite build --mode agency --outDir dist-agency",
+    "prepare:android": "node scripts/prepare-android.mjs",
+    "apk": "npm run prepare:android && ./android/gradlew -p android assembleRiderDebug assembleAgencyDebug",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "cap:sync": "npm run build && cap sync",
+    "android": "npm run cap:sync && cap open android",
+    "ios": "npm run cap:sync && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/geolocation": "^8.0.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@supabase/supabase-js": "^2.57.4",
+    "lucide-react": "^0.544.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.44.1",
+    "vite": "^7.1.7"
+  }
+}
